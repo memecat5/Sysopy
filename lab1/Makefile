@@ -1,9 +1,9 @@
 CC= gcc
-CFLAGS=-g -Wall -o
+CFLAGS=-g -Wall
 all: countdown.exe
 
 countdown.exe: countdown.c
-	$(CC) countdown.c $(CFLAGS) countdown.exe
+	$(CC) $(CFLAGS) countdown.c -o countdown.exe
 
 .PHONY: clean
 

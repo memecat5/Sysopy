@@ -1,5 +1,5 @@
 flipper.exe: flipper.c
-	gcc -g -Wall -O2 flipper.c -o flipper.exe
+	gcc -g -Wall flipper.c -o flipper.exe
 
 .PHONY: clean
 
