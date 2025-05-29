@@ -69,12 +69,11 @@ void user_process(){
         }
         msg[MSG_LEN] = '\0';
 
-        // to not get confused
-        printf("User %d writes: %s\n", getpid(), msg);
-        
         // send message to printers
         queue_write(queue_full, queue_empty, print_queue, msg);
 
+        // to not get confused
+        printf("User %d writes: %s\n", getpid(), msg);
         sleep(rand() % 20 + 10);
     }
 
@@ -122,9 +121,6 @@ int main(int argc, char* argv[]){
         perror("ftruncate went wrong\n");
         exit(1);
     }
-
-    char* print_queue = (char*)mmap(NULL, MSG_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-
 
     //create printer processes
     for(int i = 0; i < m_printers; i++){
